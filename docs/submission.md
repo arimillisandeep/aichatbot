@@ -12,7 +12,7 @@ Everything to hand in, in one place. Verified 1 October 2026.
 | **Telegram bot** | `https://t.me/PronixAIChatbotSandeepBot` | Say "Start" in the chat to open it. |
 | **Kore.ai builder** | `https://platform.kore.ai/builder/app/automationdialoggpt/automationconversationorchestration` | Requires the signed-in Kore account. |
 | **Kore.ai publish page** | `https://platform.kore.ai/builder/app/publish` | Shows published dialog tasks. |
-| **Source repository** | *not yet available* | See section 5 — no commits, no remote. |
+| **Source repository** | `https://github.com/arimillisandeep/aichatbot` | Pushed, commit `fee7e08`, 135 files on `master`. |
 
 Copy-paste block:
 
@@ -20,6 +20,7 @@ Copy-paste block:
 Live app:     https://aicharbot.vercel.app
 Telegram:     https://t.me/PronixAIChatbotSandeepBot
 Kore builder: https://platform.kore.ai/builder/app/automationdialoggpt/automationconversationorchestration
+Repository:   https://github.com/arimillisandeep/aichatbot
 ```
 
 ---
@@ -74,33 +75,33 @@ the conversation where claiming otherwise survives contact with the builder.
 
 ## 5. Repository link — needs action
 
-There is currently **no source repository link** to submit:
+The source repository is live at `https://github.com/arimillisandeep/aichatbot`
+on branch `master`, at commit `fee7e08` with 135 tracked files.
 
-- The local git repo has **no commits at all** (`master`, empty history).
-- **No remote is configured.**
-- **GitHub CLI (`gh`) is not installed**, so this could not be automated.
-
-To produce a link, do this:
+Local and remote are in sync. Subsequent work is pushed with:
 
 ```bash
-cd "C:\Users\Arimilli sandeep\Documents\ChatGPT\aicharbot"
-
 git add .
-git commit -m "Pronix Kore.ai XO virtual assistant: build, tests, docs, deployment"
-
-gh repo create pronix-xo-assistant --private --source=. --push
+git commit -m "describe the change"
+git push
 ```
 
-If you would rather not install `gh`, the equivalent by hand is: create an empty
-repository on github.com, then
+### Credentials kept out of the repository
 
-```bash
-git remote add origin https://github.com/<your-user>/<repo>.git
-git push -u origin master
-```
+Two categories of file are excluded via `.gitignore` and are **not** in the
+pushed history:
 
-A **private** repository is usually the right call for employer work. Add the
-repository link to the table in section 1 once it exists.
+- **`output/kore/`** — Kore.ai recovery dumps. `output/kore/channels.json`
+  contains live channel credentials (`app_token`, `botSecret`) returned by the
+  Kore channel APIs. These remain on disk only and were never committed.
+- **`.codex-*/`** — transient PPT build and render working directories holding
+  roughly 17 MB of duplicate decks and slide renders.
+
+`node_modules`, `dist` and `.vercel` are also ignored. `.env.example` is
+committed and carries no values, only a documented placeholder.
+
+If a credential ever needs rotating, note that it was never in git history, so
+no history rewrite is required.
 
 ---
 
@@ -110,7 +111,7 @@ repository link to the table in section 1 once it exists.
       working on your own Wi-Fi.
 - [ ] Scroll the slide PDF end to end — geometry was machine-verified, but text
       wrapping and spacing were not visually checked.
-- [ ] Create the repository and add its link.
+- [x] Create the repository and add its link — `https://github.com/arimillisandeep/aichatbot`.
 - [ ] Confirm which deck you are submitting: the 16-slide one from this session,
       or the 30 Sep `..._Final_Audited_v2.pptx` from the earlier pass. Both sit in
       `output/` and they are not the same file.
