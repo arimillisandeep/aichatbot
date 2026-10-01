@@ -1,0 +1,35 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.vercel
+
+# Kore.ai recovery dumps. output/kore/channels.json contains live channel
+# credentials (app_token, botSecret) returned by the Kore channel APIs.
+# These are working artefacts and must never be committed or shared.
+output/kore/
+
+# Transient PPT build/render working directories from earlier tooling runs.
+# They hold ~17 MB of duplicate decks and slide renders, not source.
+.codex-*/
